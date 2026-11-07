@@ -1,37 +1,4 @@
-import numpy as np
-import pandas as pd
+print("hello noob")
 
-data = pd.read_csv("candidate.csv")
-concepts = np.array(data.iloc[:, :-1])
-target = np.array(data.iloc[:, -1])
-
-def train(concepts, target):
-    specific_h = concepts[0].copy()
-    general_h = [["?" for _ in range(len(specific_h))] for _ in range(len(specific_h))]
-
-    for i, h in enumerate(concepts):
-        if target[i] == "yes":
-            for x in range(len(specific_h)):
-                if h[x] != specific_h[x]:
-                    specific_h[x] = '?'
-                    general_h[x][x] = '?'
-        else:
-            for x in range(len(specific_h)):
-                if h[x] != specific_h[x]:
-                    general_h[x][x] = specific_h[x]
-                else:
-                    general_h[x][x] = '?'
-
-    general_h = [g for g in general_h if g != ['?' for _ in range(len(specific_h))]]
-    return specific_h, general_h
-
-s_final, g_final = train(concepts, target)
-print("Final Specific Hypothesis:", s_final)
-print("Final General Hypotheses:", g_final)
-
-📊 Dataset: candidate.csv
-Sky	AirTemp	Humidity	Wind	Water	Forecast	EnjoySport
-Sunny	Warm	Normal	Strong	Warm	Same	Yes
-Sunny	Warm	High	Strong	Warm	Same	Yes
-Rainy	Cold	High	Strong	Warm	Change	No
-Sunny	Warm	High	Strong	Cool	Change	Yes
+print("This change was made by Aman!")
+print("Testing Git branching and pull requests.")git status
